@@ -1,0 +1,46 @@
+<div class="" ng-controller="universCtrl" ng-init="data">
+<!-- ค้นหา -->
+  <h3>ค้นหา</h3>
+  <div class="">
+    <form>
+      <label for="university_name">ชื่อมหาวิทยาลัย :&nbsp;</label>
+      <input name="university_name" type="text" ng-model="data.id"/>
+      <label for="university_name_en">ชื่อมหาวิทยาลัย(En) :&nbsp;</label>
+      <input name="university_name_en" type="text" ng-model="data.name"/>
+      <label for="status">สถานะ :&nbsp;</label>
+      <input type="radio" name="status" /> ใช้งาน
+      <input type="radio" name="status" /> ไม่ใช้งาน
+      <button name="find" type="button">ค้นหา</button>
+      <button name="cancel" type="button">ยกเลิก</button>
+    </form>
+  </div>
+<!-- ตารางคำนำหน้า -->
+  <div class="">
+    <h3>ตารางมหาวิทยาลัย</h3>
+    <table style="width:80%;margin:0 auto;">
+      <thead>
+        <tr>
+          <th class="text-center"><input type="checkbox"/></th>
+          <th class="text-center">ชื่อมหาวิทยาลัย</th>
+          <th class="text-center">ชื่อมหาวิทยาลัย (En)</th>
+          <th class="text-center">ที่อยู่</th>
+          <th class="text-center">E-mail</th>
+          <th class="text-center">สถานะ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="{{title.length == 0}}">
+          <td colspan="5">ไม่พบข้อมูล</td>
+        </tr>
+        <tr class="text-center" ng-repeat="data in title" ng-show="{{title.length > 0}}">
+          <td><input type="checkbox"/></td>
+            <td ng-click="selectData($index)">{{data.id}}</td>
+            <td ng-click="selectData($index)">{{data.name}}</td>
+            <td ng-click="selectData($index)">{{data.nameEng}}</td>
+            <td ng-click="selectData($index)">{{data.gender}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br/>

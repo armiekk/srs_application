@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Register</title>
+  <script src="../javascripts/jquery.min.js" charset="utf-8"></script>
+  <script src="../javascripts/angular.min.js" charset="utf-8"></script>
+  <script src="../javascripts/angular-route.min.js" charset="utf-8"></script>
+  <script src="../javascripts/material.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="../stylesheets/material.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../stylesheets/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../stylesheets/bootstrap-material.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body ng-app="srsApp">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">SRSRegister</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+      </div>
+    </header>
+    <main class="container" style="margin: 60px auto;">
+      <div class="panel panel-default">
+
+        <div class="panel-body mdl-shadow--2dp">
+          <div style=" margin-top: 0px; padding-top: 20px; ">
+            <h1 class="text-center">สมัครสมาชิก</h1>
+          </div>
+          <hr/>
+          <form class="form-horizontal" ng-controller="regCtrl">
+            <!-- บัญชีผู้ใช้ - รหัสผ่าน -->
+            <div class="bg-primary mdl-shadow--2dp" style="width: auto;margin:0 16px 0 16px;border-radius: 8px 8px 0 0;">
+              <h3 style="margin-left: 16px;padding: 8px;margin-bottom: 0px;margin-top: 0px;">บัญชีผู้ใช้/รหัสผ่าน</h3>
+            </div>
+            <div class="mdl-shadow--2dp" style="border-radius: 0 0 8px 8px;margin:0 16px 0px;padding: 16px;">
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="username">บัญชีผู้ใช้ :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="username" placeholder="บัญชีผู้ใช้" type="text">
+                </div>
+                <label class="col-md-2 control-label" for="password">รหัสผ่าน :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="password" placeholder="รหัสผ่าน" type="text">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="email">อีเมลล์ :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="email" placeholder="อีเมลล์" type="email">
+                </div>
+              </div>
+            </div>
+            <br/>
+            <div class="bg-primary mdl-shadow--2dp" style="width: auto;margin:0 16px 0 16px;border-radius: 8px 8px 0 0;">
+              <h3 style="margin-left: 16px;padding: 8px;margin-bottom: 0px;margin-top: 0px;">ข้อมูลส่วนตัว</h3>
+            </div>
+            <div class="mdl-shadow--2dp" style="border-radius: 0 0 8px 8px;margin:0 16px;padding: 16px;">
+              <!-- เพศ -->
+              <div class="form-group">
+                <label class="col-md-2 control-label">เพศ :</label>
+                <div class="col-md-1">
+                  <div class="radio radio-primary">
+                    <label>
+                      <input id="optionsRadios1" name="optionsRadios" type="radio" value="option1"> ชาย
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <div class="radio radio-primary">
+                    <label>
+                      <input id="optionsRadios2" name="optionsRadios" type="radio" value="option2"> หญิง
+                    </label>
+                  </div>
+                </div>
+                <label class="col-md-offset-1 col-md-2 control-label" for="select">คำนำหน้าชื่อ :</label>
+                <div class="col-md-2">
+                  <select class="form-control" id="select">
+                    <option>- - - -กรุณาเลือก - - - -</option>
+                    <option>นาย</option>
+                    <option>นางสาว</option>
+                  </select>
+                </div>
+              </div>
+              <!-- ชื่อ-สกุล ไทย -->
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="fname">*ชื่อ :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="fname" placeholder="ชื่อ" type="text">
+                </div>
+                <label class="col-md-2 control-label" for="lname">*นามสกุล :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="lname" placeholder="นามสกุล" type="text">
+                </div>
+              </div>
+              <!-- ชื่อ-สกุล English -->
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="fnameEng">*ชื่อ(อังกฤษ) :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="fnameEng" placeholder="ชื่อ(อังกฤษ)" type="text">
+                </div>
+                <label class="col-md-2 control-label" for="lnameEng">*นามสกุล(อังกฤษ) :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="lnameEng" placeholder="นามสกุล(อังกฤษ)" type="text">
+                </div>
+              </div>
+              <!-- เลขบัตรประชาชน-วันเกิด -->
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="id">*รหัสบัตรประชาชน :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="id" placeholder="รหัสบัตรประชาชน" type="text">
+                </div>
+                <label class="col-md-2 control-label" for="birthdate">*วัน/เดือน/ปี เกิด :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="birthdate" type="date">
+                </div>
+              </div>
+              <!-- ชื่อเล่น - มือถือ -->
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="nickname">*ชื่อเล่น :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="nickname" placeholder="ชื่อเล่น" type="text">
+                </div>
+                <label class="col-md-2 control-label" for="phone">*เบอร์โทรศัพท์ :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="phone" placeholder="เบอร์โทรศัพท์" type="text">
+                </div>
+              </div>
+              <!-- สถานภาพทางการทหาร -->
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="military">*สถานภาพทางทหาร :</label>
+                <div class="col-md-3">
+                  <input class="form-control" id="military" placeholder="สถานภาพทางทหาร" type="text">
+                </div>
+              </div>
+            </div>
+            <br/>
+            <!-- ที่อยู่ -->
+            <div class="bg-primary mdl-shadow--2dp" style="width: auto;margin:0 16px 0 16px;border-radius: 8px 8px 0 0;">
+              <h3 style="margin-left: 16px;padding: 8px;margin-bottom: 0px;margin-top: 0px;">ที่อยู่</h3>
+            </div>
+            <div class="mdl-shadow--2dp" style="border-radius: 0 0 8px 8px;margin:0 16px 0px;padding: 16px;">
+              <!-- ที่อยู่ -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="address">
+                  <span>ที่อยู่เลขที่ :</span>
+                </label>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" name="address" ng-model="stdData.ADDR" placeholder="ที่อยู่เลขที่" />
+                </div>
+                <label class="control-label col-md-1" for="moo">
+                  <span>หมู่ :</span>
+                </label>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" name="moo" ng-model="stdData.MOO" placeholder="หมู่" />
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                  <label class="control-label col-md-2" for="building" style="padding-right: 10px;padding-left: 10px;">
+                    <span>อาคาร :</span>
+                  </label>
+                  <div class="col-md-5" style="width: 169px;padding-left: 21px;padding-right: 0px;">
+                    <input type="text" class="form-control" name="building" ng-model="stdData.BUILDING" placeholder="อาคาร" style="width: 120px;margin-left: 0px;" />
+                  </div>
+                  <label class="control-label col-md-1" for="room" style="padding-left: 0px;padding-right: 0px;width: 40px;">
+                    <span>ห้อง :</span>
+                  </label>
+                  <div class="col-md-2" style="padding-left: 10px;padding-right: 20px;">
+                    <input type="text" class="form-control" name="room" ng-model="stdData.ROOM" placeholder="ห้อง" />
+                  </div>
+                </div>
+              </div>
+              <!-- ซอย-ถนน -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="alley">
+                  <span>ซอย :</span>
+                </label>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="alley" ng-model="stdData.SOI" placeholder="ซอย" />
+                </div>
+                <label class="control-label col-md-2" for="road">
+                  <span>ถนน :</span>
+                </label>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="road" ng-model="stdData.STREET" placeholder="ถนน" />
+                </div>
+              </div>
+              <!-- จังหวัด-อำเภอ -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="province">
+                  <span>จังหวัด :</span>
+                </label>
+                <div class="col-md-3" ng-init="getProvince()">
+                  <select class="form-control" ng-model="stdData.PROVINCE_PK" ng-change="getAmphur(stdData.PROVINCE_PK)">
+                    <option value="">- - - - - - - - - เลือกจังหวัด - - - - - - - - - </option>
+                    <option ng-repeat="data in provinceList" value="{{data.PROVINCE_PK}}">{{data.PROVINCE_NAME}}</option>
+                  </select>
+                </div>
+                <label class="control-label col-md-2" for="amphur">
+                  <span>อำเภอ :</span>
+                </label>
+                <div class="col-md-3">
+                  <select class="form-control" ng-model="stdData.AMPHUR_PK" ng-change="getDistrict(stdData.AMPHUR_PK)">
+                    <option value="">- - - - - - - - - เลือกอำเภอ - - - - - - - - -</option>
+                    <option ng-repeat="data in amphurList" value="{{data.AMPHUR_PK}}">{{data.AMPHUR_NAME}}</option>
+                  </select>
+                </div>
+              </div>
+              <!-- ตำบล-ไปรษณีย์ -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="district">
+                  <span>ตำบล :</span>
+                </label>
+                <div class="col-md-3">
+                  <select class="form-control" ng-model="stdData.DISTRICT_PK">
+                    <option value="">- - - - - - - - - เลือกตำบล - - - - - - - - - </option>
+                    <option ng-repeat="data in districtList" value="{{data.DISTRICT_PK}}">{{data.DISTRICT_NAME}}</option>
+                  </select>
+                </div>
+                <label class="control-label col-md-2" for="zipcode">
+                  <span>ไปรษณีย์ :</span>
+                </label>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="zipcode" ng-model="stdData.POSTCODE" placeholder="ไปรษณีย์" />
+                </div>
+              </div>
+              <!-- ชื่อผู้ติดต่อ-ความสัมพันธ์ -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="contact">
+                  <span>ชื่อผู้ติดต่อได้สะดวก : </span>
+                </label>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="contact" ng-model="stdData.CONVENIENT_NAME" placeholder="ชื่อผู้ติดต่อได้สะดวก" />
+                </div>
+                <label class="control-label col-md-2" for="relation">
+                  <span>ความสัมพันธ์ :</span>
+                </label>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="relation" ng-model="stdData.CONVENIENT_RELATION" placeholder="ความสัมพันธ์" />
+                </div>
+              </div>
+              <!-- เบอร์โทร -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="contact-phone">
+                  <span>เบอร์ติดต่อ :</span>
+                </label>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="contact-phone" ng-model="stdData.CONVENIENT_TEL" placeholder="เบอร์ติดต่อ" />
+                </div>
+              </div>
+            </div>
+            <br/>
+            <div class="bg-primary mdl-shadow--2dp" style="width: auto;margin:0 16px 0 16px;border-radius: 8px 8px 0 0;">
+              <h3 style="margin-left: 16px;padding: 8px;margin-bottom: 0px;margin-top: 0px;">สถานศึกษา/ผลงาน</h3>
+            </div>
+            <div class="mdl-shadow--2dp" style="border-radius: 0 0 8px 8px;margin:0 16px 16px;padding: 16px;">
+              <!-- มหาวิทยาลัย -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="college">
+                  <span>มหาวิทยาลัย :</span>
+                </label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" name="college" ng-model="regData.UNIVERSITY_PK" placeholder="มหาวิทยาลัย"/>
+                </div>
+              </div>
+              <!-- คณะ-สาขา -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="bachelor">
+                  <span>คณะ :</span>
+                </label>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="bachelor" ng-model="regData.FACULTY_PK" placeholder="คณะ"/>
+                </div>
+                <label class="control-label col-md-2" for="major">
+                  <span>สาขา :</span>
+                </label>
+                <div class="col-md-3">
+                  <input type="text" class="form-control" name="major" ng-model="regData.MAJOR_PK" placeholder="สาขา"/>
+                </div>
+              </div>
+              <!-- ชั้นปี -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="year">
+                  <span>ชั้นปี :</span>
+                </label>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" name="year" ng-model="regData.DEGREE" placeholder="ชั้นปี"/>
+                </div>
+              </div>
+              <!-- โปรเจค -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="project">
+                  <span>โปรเจค :</span>
+                </label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" name="project" ng-model="regData.PROJECT_PK" placeholder="โปรเจค"/>
+                </div>
+              </div>
+
+              <!-- วัตถุประสงค์ -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="objective">
+                  <span>วัตถุประสงค์: </span>
+                </label>
+                <div class="col-md-6">
+                  <textarea class="form-control" name="objective" rows="4" cols="40" ng-model="regData.OBJECTIVE" placeholder="วัตถุประสงค์"></textarea>
+                </div>
+              </div>
+              <!-- ผลงาน -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="archivement">
+                  <span>ผลงาน :</span>
+                </label>
+                <div class="col-md-6">
+                  <textarea class="form-control" name="archivement" rows="4" cols="40" ng-model="regData.WORKINGS" placeholder="ผลงาน"></textarea>
+                </div>
+              </div>
+              <!-- ประสบการณ์ -->
+              <div class="form-group">
+                <label class="control-label col-md-2" for="experience">
+                  <span>ประสบการณ์ </span>
+                </label>
+                <div class="col-md-6">
+                  <textarea class="form-control" name="experience" rows="4" cols="40" ng-model="regData.EXPERIENCE" placeholder="ประสบการณ์"></textarea>
+                </div>
+              </div>
+            </div>
+            <br/>
+            <div class="form-group">
+              <div class="text-center">
+                <a class="btn btn-success" href="#" name="register" type="button">ตกลง</a> &nbsp;&nbsp;
+                <a class="btn btn-danger" href="#" name="cancel" type="button">ยกเลิก</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+  </main>
+  </div>
+  <!-- **script** -->
+  <script src="../javascripts/bootstrap-material.js" charset="utf-8"></script>
+  <script src="../javascripts/ripples.min.js" charset="utf-8"></script>
+  <script src="../srsApp.js" charset="utf-8"></script>
+  <script src="../controllers/regCtrl.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $.material.init();
+  </script>
+</body>
+
+</html>

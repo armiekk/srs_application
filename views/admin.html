@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="/admin/"/>
+  <meta charset="utf-8">
+  <title>Adminstrator Management</title>
+  <script src="../javascripts/angular.min.js" charset="utf-8"></script>
+  <script src="../javascripts/angular-route.min.js" charset="utf-8"></script>
+  <script src="../javascripts/material.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="../stylesheets/material.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../stylesheets/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body ng-app="srsApp">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Admin Console</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+      </div>
+    </header>
+    <main class="container mdl-shadow--2dp" style="margin-top:60px;">
+      <ul>
+        <li><a href="/admin/find_title">ตารางรหัสคำนำหน้า</a></li>
+        <li><a href="/admin/find_university">ตารางรหัสมหาวิทยาลัย</a></</li>
+        <li><a href="/admin/find_faculty">ตารางรหัสคณะ/ภาควิชา</a></</li>
+        <li><a href="/admin/find_major">ตารางรหัสสาขาวิชาเอก</a></</li>
+        <li><a href="/admin/find_scoretype">ตารางรหัสประเภทคะแนน</a></</li>
+        <li><a href="/admin/find_activities">ตารางรหัสกิจกรรม</a></</li>
+      </ul>
+      <div ng-view></div>
+    </main>
+  </div>
+</body>
+<script src="../srsApp.js" charset="utf-8"></script>
+<script src="../controllers/regCtrl.js" charset="utf-8"></script>
+<script src="../controllers/adminCtrl.js" charset="utf-8"></script>
+</html>
